@@ -56,6 +56,11 @@
 		83A5A1E01DC242CF0070D08C /* AppCine */ = {
 			isa = PBXGroup;
 			children = (
+				83A5A1FA1DC2460F0070D08C /* WS */,
+				83A5A1F91DC246040070D08C /* Clases generales */,
+				83A5A1F81DC245F10070D08C /* Iphone */,
+				83A5A1F71DC245E40070D08C /* DALC */,
+				83A5A1F61DC245D90070D08C /* BE */,
 				83A5A1E11DC242CF0070D08C /* AppDelegate.swift */,
 				83A5A1E31DC242CF0070D08C /* ViewController.swift */,
 				83A5A1E51DC242CF0070D08C /* Main.storyboard */,
@@ -65,6 +70,97 @@
 				83A5A1E81DC242CF0070D08C /* AppCine.xcdatamodeld */,
 			);
 			path = AppCine;
+			sourceTree = "<group>";
+		};
+		83A5A1F61DC245D90070D08C /* BE */ = {
+			isa = PBXGroup;
+			children = (
+				83A5A2011DC246BD0070D08C /* DM */,
+			);
+			path = BE;
+			sourceTree = "<group>";
+		};
+		83A5A1F71DC245E40070D08C /* DALC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DALC;
+			sourceTree = "<group>";
+		};
+		83A5A1F81DC245F10070D08C /* Iphone */ = {
+			isa = PBXGroup;
+			children = (
+				83A5A1FE1DC246860070D08C /* Clases */,
+				83A5A1FD1DC2467B0070D08C /* Vistas */,
+			);
+			path = Iphone;
+			sourceTree = "<group>";
+		};
+		83A5A1F91DC246040070D08C /* Clases generales */ = {
+			isa = PBXGroup;
+			children = (
+				83A5A1FC1DC246610070D08C /* CDMImageDownloaded */,
+				83A5A1FB1DC2462B0070D08C /* Sincronizar */,
+			);
+			path = "Clases generales";
+			sourceTree = "<group>";
+		};
+		83A5A1FA1DC2460F0070D08C /* WS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WS;
+			sourceTree = "<group>";
+		};
+		83A5A1FB1DC2462B0070D08C /* Sincronizar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sincronizar;
+			sourceTree = "<group>";
+		};
+		83A5A1FC1DC246610070D08C /* CDMImageDownloaded */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CDMImageDownloaded;
+			sourceTree = "<group>";
+		};
+		83A5A1FD1DC2467B0070D08C /* Vistas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vistas;
+			sourceTree = "<group>";
+		};
+		83A5A1FE1DC246860070D08C /* Clases */ = {
+			isa = PBXGroup;
+			children = (
+				83A5A1FF1DC246A20070D08C /* Peliculas */,
+			);
+			path = Clases;
+			sourceTree = "<group>";
+		};
+		83A5A1FF1DC246A20070D08C /* Peliculas */ = {
+			isa = PBXGroup;
+			children = (
+				83A5A2001DC246AF0070D08C /* BC */,
+			);
+			path = Peliculas;
+			sourceTree = "<group>";
+		};
+		83A5A2001DC246AF0070D08C /* BC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BC;
+			sourceTree = "<group>";
+		};
+		83A5A2011DC246BD0070D08C /* DM */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
