@@ -8,10 +8,11 @@
 
 import UIKit
 
-class Sincronizar: NSObject {
+class Sincronizar: NSObject
+{
 
-    class func iniciarSincronizacion(conCompletion completion : @escaping () -> Void){
-        
+    class func iniciarSincronizacion(conCompletion completion : @escaping () -> Void)
+    {
         CDMWebModel.obtenerInformacion { (arrayPeliculas, arraySucursales, arrayHorarios) in
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -27,21 +28,18 @@ class Sincronizar: NSObject {
                 SucursalDALC.agregar(sucursales: obj as! SucursalBE, enArraySucursales: arraySucursalesDM, conContexto: contexto)
             })
             
+            arrayPeliculasDM    = PeliculaDALC.listarTodasLasPeliculas(conContexto: contexto)
+            arraySucursalesDM   = SucursalDALC.listarTodasLasSucursales(conContexto: contexto)
             
-            arrayPeliculasDM = PeliculaDALC.listarTodasLasPeliculas(conContexto: contexto)
-            arraySucursalesDM = SucursalDALC.listarTodasLasSucursales(conContexto: contexto)
             let arrayHorariosDM = HorarioDALC.listarTodasLosHorarios(conContexto: contexto)
             
             arrayHorarios.enumerateObjects({ (obj, idx, stop) in
-                
                 HorarioDALC.agregar(horario: obj as! HorarioBE, conArrayPeliculas: arrayPeliculasDM, conArraySucursales: arraySucursalesDM, enArrayHorario: arrayHorariosDM, conContexto: contexto)
             })
             
             appDelegate.saveContext()
             
             completion()
-            
         }
     }
-    
 }

@@ -8,17 +8,14 @@
 
 import UIKit
 
-class CDMImageDownloaded: NSObject {
-
-    
-    
+class CDMImageDownloaded: NSObject
+{
     static let CDMImageDownloadedDirectorioDescarga = "Caches"
     
-    
-    
-    class func guardar(imagen aImagen : UIImage?, conNombre nombre : String?, enDirectorio directorio : String?) -> Bool {
-        
-        if aImagen == nil || nombre == nil {
+    class func guardar(imagen aImagen : UIImage?, conNombre nombre : String?, enDirectorio directorio : String?) -> Bool
+    {
+        if aImagen == nil || nombre == nil
+        {
             return false
         }
         
@@ -27,20 +24,23 @@ class CDMImageDownloaded: NSObject {
         let filePath        = cachesPath.appendingPathComponent(nombre!)
         let data            = nombre?.hasSuffix("jpg") == true ? UIImageJPEGRepresentation(aImagen!, 1.0) : UIImagePNGRepresentation(aImagen!)
         
-        do{
+        do
+        {
             try data?.write(to: URL.init(fileURLWithPath: filePath), options: Data.WritingOptions.atomic)
             print("OSPImageDownloaded / Se guardó la imagen \(nombre!)")
             return true
-        }catch{
+        }
+        catch
+        {
             print("OSPImageDownloaded / NO se guardó la imagen \(nombre!)")
             return false
         }
     }
     
-    
-    class func obtenerImagen(conNombre nombre : String?, enDirectorio directorio : String?) -> UIImage? {
-        
-        if nombre == nil {
+    class func obtenerImagen(conNombre nombre : String?, enDirectorio directorio : String?) -> UIImage?
+    {
+        if nombre == nil
+        {
             return nil
         }
         
@@ -51,41 +51,42 @@ class CDMImageDownloaded: NSObject {
         let cachesPath      = documentsPath.appendingPathComponent(directorio != nil ? directorio! : self.CDMImageDownloadedDirectorioDescarga) as NSString
         let filePath        = cachesPath.appendingPathComponent(nombre!)
         
-        if fileManager.fileExists(atPath: filePath){
+        if fileManager.fileExists(atPath: filePath)
+        {
             imagen = UIImage(contentsOfFile: filePath)
         }
         
         return imagen
     }
     
-    
-    class func descargarImagen(enURL url : String?, conNombre nombre : String?) -> UIImage?{
-        
-        if url == nil || nombre == nil {
+    class func descargarImagen(enURL url : String?, conNombre nombre : String?) -> UIImage?
+    {
+        if url == nil || nombre == nil
+        {
             return nil
         }
         
         let urlDescarga = URL.init(string: url!)
-        if urlDescarga == nil {
+        if urlDescarga == nil
+        {
             return nil
         }
         
-        do{
-            
+        do
+        {
             let dataImagenDescarga = try Data.init(contentsOf: urlDescarga!)
             let imgDescargada = UIImage(data: dataImagenDescarga)
             
             return self.guardar(imagen: imgDescargada, conNombre: nombre, enDirectorio: nil) == true ? self.obtenerImagen(conNombre: nombre, enDirectorio: nil) : nil
-        }catch{
-            
+        }
+        catch
+        {
             return nil
         }
     }
     
-    
-    
-    class func asignarConAnimacion(laImagen nuevaImagen : UIImage?, enImageView imageView : UIImageView, conTransicion transicion : String?) {
-        
+    class func asignarConAnimacion(laImagen nuevaImagen : UIImage?, enImageView imageView : UIImageView, conTransicion transicion : String?)
+    {
         imageView.image = nuevaImagen
         
         let transition = CATransition.init()
@@ -96,38 +97,33 @@ class CDMImageDownloaded: NSObject {
         imageView.layer.add(transition, forKey: nil)
     }
     
-    
-    class func descargarImagen(enURL url : String?, paraImageView imageViewFoto : UIImageView, conPlaceHolder imgPlaceHolder : UIImage?, conCompletion completion : @escaping(_ descargaCorrecta : Bool, _ nombreArchivo : String?, _ imagen : UIImage?) -> Void) {
-        
+    class func descargarImagen(enURL url : String?, paraImageView imageViewFoto : UIImageView, conPlaceHolder imgPlaceHolder : UIImage?, conCompletion completion : @escaping(_ descargaCorrecta : Bool, _ nombreArchivo : String?, _ imagen : UIImage?) -> Void)
+    {
         imageViewFoto.image = imgPlaceHolder
         
         var nombre : String? = url == nil ? nil : NSString(string: url!).lastPathComponent
         
         nombre = nombre?.hasSuffix("jpg") == true ? nombre?.replacingOccurrences(of: ".jpg", with: "@2x.jpg") : nombre?.replacingOccurrences(of: ".png", with: "@2x.png")
         
-        DispatchQueue.global(qos: .default).async {
-            
+        DispatchQueue.global(qos: .default).async
+        {
             let imagenGuardada = self.obtenerImagen(conNombre: nombre, enDirectorio: nil)
             
-            if imagenGuardada == nil {
-                
+            if imagenGuardada == nil
+            {
                 let imagenDescargada = self.descargarImagen(enURL: url, conNombre: nombre)
-                DispatchQueue.main.async {
-                    
+                DispatchQueue.main.async
+                {
                     completion( imagenDescargada != nil ? true : false, url, imagenDescargada != nil ? imagenDescargada : imgPlaceHolder)
                 }
-                
-            }else{
-                
-                DispatchQueue.main.async {
-                    
+            }
+            else
+            {
+                DispatchQueue.main.async
+                {
                     completion( true, url, imagenGuardada)
                 }
             }
         }
     }
-    
-    
-    
-    
 }

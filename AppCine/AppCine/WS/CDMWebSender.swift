@@ -8,14 +8,12 @@
 
 import UIKit
 
-class CDMWebSender: NSObject {
-    
-
-    
+class CDMWebSender: NSObject
+{
     //MARK:- Configuración
     
-    class func crearCabeceraPeticion() -> NSDictionary {
-        
+    class func crearCabeceraPeticion() -> NSDictionary
+    {
         let diccionarioHeader = NSMutableDictionary()
         
         diccionarioHeader.setObject("application/json; charset=UTF-8", forKey: "Content-Type" as NSCopying)
@@ -24,11 +22,8 @@ class CDMWebSender: NSObject {
         return diccionarioHeader
     }
     
-    
-    
-    
-    class func crearCabeceraPeticionConToken(_ aToken : NSString) -> NSDictionary {
-        
+    class func crearCabeceraPeticionConToken(_ aToken : NSString) -> NSDictionary
+    {
         let diccionarioHeader = NSMutableDictionary()
         
         diccionarioHeader.setObject("application/json; charset=UTF-8", forKey: "Content-Type" as NSCopying)
@@ -38,11 +33,8 @@ class CDMWebSender: NSObject {
         return diccionarioHeader
     }
     
-    
-    
-    
-    class func crearCabeceraPeticionConCookie(_ aCookie : NSString) -> NSDictionary {
-        
+    class func crearCabeceraPeticionConCookie(_ aCookie : NSString) -> NSDictionary
+    {
         let diccionarioHeader = NSMutableDictionary()
         
         diccionarioHeader.setObject("application/json; charset=UTF-8", forKey: "Content-Type" as NSCopying)
@@ -51,30 +43,28 @@ class CDMWebSender: NSObject {
         
         return diccionarioHeader
     }
-    
-    
-    
+ 
     
     //MARK: - Tratado de respuesta
     
-    
-    class func obtenerRespuestaEnJSON(conData data : Data) -> Any? {
-        
-        do{
+    class func obtenerRespuestaEnJSON(conData data : Data) -> Any?
+    {
+        do
+        {
             return try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-        }catch{
+        }
+        catch
+        {
             return nil
         }
     }
     
-    
-    
-    
-    class func obtenerRespuestaServicio(paraData data : Data?, response : URLResponse?, error : Error?) -> CDMWebResponse{
-        
+    class func obtenerRespuestaServicio(paraData data : Data?, response : URLResponse?, error : Error?) -> CDMWebResponse
+    {
         var respuesta : Any? = nil
         
-        if error == nil && data != nil {
+        if error == nil && data != nil
+        {
             respuesta = self.obtenerRespuestaEnJSON(conData: data!)
         }
         
@@ -89,7 +79,7 @@ class CDMWebSender: NSObject {
         objRespuesta.statusCode         = urlResponse?.statusCode
         objRespuesta.respuestaNSData    = data
         objRespuesta.error              = error
-        objRespuesta.datosCabezera      = headerFields
+        objRespuesta.datosCabecera      = headerFields
         objRespuesta.token              = headerFields?["_token"] as? NSString
         objRespuesta.cookie             = headerFields?["_token"] as? NSString
         
@@ -97,11 +87,7 @@ class CDMWebSender: NSObject {
     }
     
     
-
-    
     //MARK: Consumo de servicios con cookie
-
-    
     
     @discardableResult class func doPOSTCookieToURL(conURL url : NSString, conPath path : NSString, conParametros parametros : Any?, conCookie cookie : NSString, conCompletion completion : @escaping (_ objRespuesta : CDMWebResponse) -> Void) -> URLSessionDataTask {
         

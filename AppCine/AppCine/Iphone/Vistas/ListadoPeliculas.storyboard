@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="faG-OO-9XR" id="mQW-vG-ezk">
-                                            <frame key="frameInset" width="320" height="101"/>
+                                            <frame key="frameInset" width="320" height="101.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o2B-OU-yFS">
@@ -43,8 +43,8 @@
                                             <color key="backgroundColor" red="0.27450980390000002" green="0.3294117647" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="imgPelicula" destination="o2B-OU-yFS" id="6UK-u0-WC6"/>
-                                            <outlet property="lblNombrePelicula" destination="5vR-zm-YQa" id="vFY-ZK-Mam"/>
+                                            <outlet property="imgPelicula" destination="o2B-OU-yFS" id="vBR-P6-U9a"/>
+                                            <outlet property="lblNombrePelicula" destination="5vR-zm-YQa" id="HgC-4a-BZq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -63,7 +63,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tlbPeliculas" destination="gsI-Un-Zdd" id="nq4-xn-2FZ"/>
+                        <outlet property="tblPeliculas" destination="gsI-Un-Zdd" id="3x9-4l-68B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qb-hd-3pe" userLabel="First Responder" sceneMemberID="firstResponder"/>

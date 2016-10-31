@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Horario" representedClassName=".Horario" syncable="YES">
+        <attribute name="horario_horario" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pelicula" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pelicula" inverseName="horarios" inverseEntity="Pelicula" syncable="YES"/>
+        <relationship name="sucursal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sucursal" inverseName="horarios" inverseEntity="Sucursal" syncable="YES"/>
+    </entity>
+    <entity name="Pelicula" representedClassName=".Pelicula" syncable="YES">
+        <attribute name="pelicula_director" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pelicula_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pelicula_nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pelicula_nombreOriginal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pelicula_reparto" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pelicula_resumen" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pelicula_urlImagen" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pelicula_urlVideo" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="horarios" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Horario" inverseName="pelicula" inverseEntity="Horario" syncable="YES"/>
+    </entity>
+    <entity name="Sucursal" representedClassName=".Sucursal" syncable="YES">
+        <attribute name="sucursal_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sucursal_nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="horarios" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Horario" inverseName="sucursal" inverseEntity="Horario" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Horario" positionX="-92" positionY="-423" width="128" height="88"/>
+        <element name="Pelicula" positionX="124" positionY="-252" width="128" height="178"/>
+        <element name="Sucursal" positionX="-272" positionY="-225" width="128" height="88"/>
+    </elements>
 </model>

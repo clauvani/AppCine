@@ -8,14 +8,13 @@
 
 import UIKit
 
-class CDMWebResponse: NSObject {
-    
+class CDMWebResponse: NSObject
+{
     var respuestaJSON   : Any?
     var statusCode      : NSInteger?
     var respuestaNSData : Data?
     var error           : Error?
-    var datosCabezera   : NSDictionary?
+    var datosCabecera   : NSDictionary?
     var token           : NSString?
     var cookie          : NSString?
-    
 }
