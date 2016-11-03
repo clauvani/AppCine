@@ -15,17 +15,17 @@
                         <viewControllerLayoutGuide type="bottom" id="teA-uX-ge6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mNb-cu-pzx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gsI-Un-Zdd">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PeliculaTableViewCell" rowHeight="102" id="faG-OO-9XR" customClass="PeliculaTableViewCell" customModule="AppCine" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="102"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="faG-OO-9XR" id="mQW-vG-ezk">
-                                            <frame key="frameInset" width="320" height="101.5"/>
+                                            <frame key="frameInset" width="375" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o2B-OU-yFS">
@@ -49,8 +49,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="8WM-4P-UK5" id="13A-R2-qJp"/>
-                                    <outlet property="delegate" destination="8WM-4P-UK5" id="3x4-x4-nYz"/>
+                                    <outlet property="dataSource" destination="8WM-4P-UK5" id="LQD-MK-0Gm"/>
+                                    <outlet property="delegate" destination="8WM-4P-UK5" id="p6s-fs-iKi"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -63,7 +63,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tblPeliculas" destination="gsI-Un-Zdd" id="3x9-4l-68B"/>
+                        <outlet property="tblPeliculas" destination="gsI-Un-Zdd" id="36f-tI-2Tu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qb-hd-3pe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -79,7 +79,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Yon-Wc-99o"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mN7-zZ-Q8u">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f3m-Bg-G5S">

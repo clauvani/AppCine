@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PeliculasViewController: UIViewController
+class PeliculasViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
 
     @IBOutlet weak var tblPeliculas: UITableView!
@@ -44,7 +44,7 @@ class PeliculasViewController: UIViewController
 
         PeliculaBC.listarPeliculas { (arrayPeliculas) in
             self.arrayPeliculas = arrayPeliculas
-            self.tblPeliculas.reloadData()
+//            self.tblPeliculas.reloadData()
         }
     }
     
