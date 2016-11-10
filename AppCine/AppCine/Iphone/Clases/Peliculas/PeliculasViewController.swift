@@ -12,6 +12,7 @@ class PeliculasViewController: UIViewController, UITableViewDataSource, UITableV
 {
 
     @IBOutlet weak var tblPeliculas: UITableView!
+    
 
     var arrayPeliculas = NSMutableArray()
     
