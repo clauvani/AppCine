@@ -8,7 +8,8 @@
 
 import UIKit
 
-class PeliculasViewController2: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate
+class PeliculasViewController2: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+    
 {
     @IBOutlet weak var colPeliculas: UICollectionView!
     
@@ -31,6 +32,16 @@ class PeliculasViewController2: UIViewController, UICollectionViewDataSource, UI
         cell.actualizarData()
         
         return cell
+    }
+    
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+        
+        let anchoPantalla = UIScreen.main.bounds.size.width
+        let anchoCelda = (anchoPantalla - 30)/2
+        let altoCelda = anchoCelda / 0.604
+        
+        return CGSize(width: CGFloat(anchoCelda), height: CGFloat(altoCelda))
     }
 
     override func viewDidLoad()

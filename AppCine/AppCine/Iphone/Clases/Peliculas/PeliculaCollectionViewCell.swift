@@ -22,21 +22,20 @@ class PeliculaCollectionViewCell: UICollectionViewCell
         
         CDMImageDownloaded.descargarImagen(enURL: self.objPelicula?.pelicula_urlImagen, paraImageView: self.imgPelicula2, conPlaceHolder: nil) { (esCorrecto, nombreImagen, imagen) in
             
-            self.imgPelicula2.image = imagen
+            if self.objPelicula!.pelicula_urlImagen! == nombreImagen {
+                self.imgPelicula2.image = imagen
+            }
         }
     }
+ 
     
-    override func awakeFromNib()
-    {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    //override func setSelected(_ selected: Bool, animated: Bool)
-    //{
-    //    super.setSelected(selected, animated: animated)
+    override func draw(_ rect: CGRect) {
         
-        // Configure the view for the selected state
-    //}
+        self.layer.shadowRadius = 4
+        self.layer.shadowOpacity = 1
+        self.layer.shadowColor = UIColor.white.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.masksToBounds = false
+    }
     
 }
