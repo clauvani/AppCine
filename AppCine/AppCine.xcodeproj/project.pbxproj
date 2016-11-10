@@ -35,6 +35,7 @@
 		83A5A21D1DC24DDB0070D08C /* ListadoPeliculas.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A5A21C1DC24DDB0070D08C /* ListadoPeliculas.storyboard */; };
 		83D1B22D1DD4B73100D8C1F7 /* PeliculaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D1B22C1DD4B73100D8C1F7 /* PeliculaCollectionViewCell.swift */; };
 		83D1B22F1DD4B8D600D8C1F7 /* PeliculasViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D1B22E1DD4B8D600D8C1F7 /* PeliculasViewController2.swift */; };
+		83E8443F1DD4DA93006C3258 /* DetallePeliculaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E8443E1DD4DA93006C3258 /* DetallePeliculaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		83A5A21C1DC24DDB0070D08C /* ListadoPeliculas.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListadoPeliculas.storyboard; sourceTree = "<group>"; };
 		83D1B22C1DD4B73100D8C1F7 /* PeliculaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeliculaCollectionViewCell.swift; sourceTree = "<group>"; };
 		83D1B22E1DD4B8D600D8C1F7 /* PeliculasViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeliculasViewController2.swift; sourceTree = "<group>"; };
+		83E8443E1DD4DA93006C3258 /* DetallePeliculaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetallePeliculaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 				835B59801DC8088F00F78AF5 /* PeliculaTableViewCell.swift */,
 				83D1B22C1DD4B73100D8C1F7 /* PeliculaCollectionViewCell.swift */,
 				83D1B22E1DD4B8D600D8C1F7 /* PeliculasViewController2.swift */,
+				83E8443E1DD4DA93006C3258 /* DetallePeliculaViewController.swift */,
 			);
 			path = Peliculas;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				835B59AA1DC80DAF00F78AF5 /* Pelicula+CoreDataClass.swift in Sources */,
 				83A5A20B1DC24CF90070D08C /* HorarioDALC.swift in Sources */,
 				835B59A81DC80DAF00F78AF5 /* Sucursal+CoreDataClass.swift in Sources */,
+				83E8443F1DD4DA93006C3258 /* DetallePeliculaViewController.swift in Sources */,
 				83A5A2191DC24DBF0070D08C /* Sincronizar.swift in Sources */,
 				83A5A20F1DC24D250070D08C /* SucursalDALC.swift in Sources */,
 				83A5A1EA1DC242CF0070D08C /* AppCine.xcdatamodeld in Sources */,
