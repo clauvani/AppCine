@@ -9,11 +9,29 @@
 import UIKit
 
 class DetallePeliculaViewController: UIViewController {
+    @IBOutlet weak var imgPelicula: UIImageView!
+    @IBOutlet weak var lblNombrePelicula: UILabel!
+    @IBOutlet weak var lblDirectorPelicula: UILabel!
+    @IBOutlet weak var lblRepartoPelicula: UILabel!
+    @IBOutlet weak var lblResumenPelicula: UILabel!
+    
+    
+    var objPelicula : Pelicula!
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.lblNombrePelicula.text = self.objPelicula.pelicula_nombre!
+        self.lblDirectorPelicula.text = self.objPelicula.pelicula_director!
+        self.lblRepartoPelicula.text = self.objPelicula.pelicula_reparto!
+        self.lblResumenPelicula.text = self.objPelicula.pelicula_resumen!
+        
+        CDMImageDownloaded.descargarImagen(enURL: self.objPelicula?.pelicula_urlImagen, paraImageView: self.imgPelicula, conPlaceHolder: nil) { (esCorrecto, nombreImagen, imagen) in
+            
+            self.imgPelicula.image = imagen
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

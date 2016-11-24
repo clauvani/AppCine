@@ -1,52 +1,64 @@
 //
-//  PeliculasViewController.swift
+//  PeliculasViewController2.swift
 //  AppCine
 //
-//  Created by B303-24 on 31/10/16.
+//  Created by B303-24 on 10/11/16.
 //  Copyright © 2016 B303-24. All rights reserved.
 //
 
 import UIKit
 
-class PeliculasViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
-{
-
-    @IBOutlet weak var tblPeliculas: UITableView!
+class PeliculasViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
     
-
+{
+    @IBOutlet weak var colPeliculas: UICollectionView!
+    
     var arrayPeliculas = NSMutableArray()
     
-    func numberOfSections(in tableView: UITableView) -> Int
-    {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.arrayPeliculas.count
     }
     
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cellIdentifier = "PeliculaTableViewCell"
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellIdentifier = "PeliculaCollectionViewCell"
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PeliculaTableViewCell
-        cell.objPelicula = self.arrayPeliculas[indexPath.row] as? Pelicula
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PeliculaCollectionViewCell
+        
+        cell.objPelicula = self.arrayPeliculas[(indexPath as NSIndexPath).item] as? Pelicula
         cell.actualizarData()
         
         return cell
     }
     
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+        
+        let anchoPantalla = UIScreen.main.bounds.size.width
+        let anchoCelda = (anchoPantalla - 30)/2
+        let altoCelda = anchoCelda / 0.604
+        
+        return CGSize(width: CGFloat(anchoCelda), height: CGFloat(altoCelda))
+        
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let objPelicula = self.arrayPeliculas[(indexPath as NSIndexPath).item] as! Pelicula
+        self.performSegue(withIdentifier: "DetallePeliculaViewController", sender: objPelicula)
+    }
 
-        PeliculaBC.listarPeliculas { (arrayPeliculas) in
+     override func viewDidLoad()
+    {
+        PeliculaBC.listarPeliculas{ (arrayPeliculas) in
             self.arrayPeliculas = arrayPeliculas
-//            self.tblPeliculas.reloadData()
         }
+        super.viewDidLoad()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle
@@ -59,6 +71,7 @@ class PeliculasViewController: UIViewController, UITableViewDataSource, UITableV
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
     /*
     // MARK: - Navigation
@@ -70,4 +83,14 @@ class PeliculasViewController: UIViewController, UITableViewDataSource, UITableV
     }
     */
 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "DetallePeliculaViewController"
+        {
+            let controller = segue.destination as! DetallePeliculaViewController
+            controller.objPelicula = sender as! Pelicula
+            
+        }
+    }
 }

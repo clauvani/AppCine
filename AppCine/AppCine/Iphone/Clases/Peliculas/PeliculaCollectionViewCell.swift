@@ -10,20 +10,20 @@ import UIKit
 
 class PeliculaCollectionViewCell: UICollectionViewCell
 {
-    @IBOutlet weak var imgPelicula2: UIImageView!
-    @IBOutlet weak var lblNombrePelicula2: UILabel!
+    @IBOutlet weak var imgPelicula: UIImageView!
+    @IBOutlet weak var lblNombrePelicula: UILabel!
     
     
     var objPelicula : Pelicula?
     
     func actualizarData()
     {
-        self.lblNombrePelicula2.text = self.objPelicula?.pelicula_nombre!
+        self.lblNombrePelicula.text = self.objPelicula?.pelicula_nombre!
         
-        CDMImageDownloaded.descargarImagen(enURL: self.objPelicula?.pelicula_urlImagen, paraImageView: self.imgPelicula2, conPlaceHolder: nil) { (esCorrecto, nombreImagen, imagen) in
+        CDMImageDownloaded.descargarImagen(enURL: self.objPelicula?.pelicula_urlImagen, paraImageView: self.imgPelicula, conPlaceHolder: nil) { (esCorrecto, nombreImagen, imagen) in
             
             if self.objPelicula!.pelicula_urlImagen! == nombreImagen {
-                self.imgPelicula2.image = imagen
+                self.imgPelicula.image = imagen
             }
         }
     }
@@ -38,4 +38,6 @@ class PeliculaCollectionViewCell: UICollectionViewCell
         self.layer.masksToBounds = false
     }
     
+
+
 }
