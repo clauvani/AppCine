@@ -33,7 +33,7 @@ class PeliculaCollectionViewCell: UICollectionViewCell
         
         self.layer.shadowRadius = 4
         self.layer.shadowOpacity = 1
-        self.layer.shadowColor = UIColor.white.cgColor
+        self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.layer.masksToBounds = false
     }

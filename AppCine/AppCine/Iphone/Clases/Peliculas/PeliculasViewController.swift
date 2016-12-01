@@ -8,19 +8,43 @@
 
 import UIKit
 
-class PeliculasViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+class PeliculasViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate
     
 {
     @IBOutlet weak var colPeliculas: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     
     var arrayPeliculas = NSMutableArray()
+    
+    var arrayPeliculasTbl = NSMutableArray() {
+        
+        didSet{
+            self.colPeliculas.reloadData()
+        }
+    }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.characters.count == 0 {
+            self.arrayPeliculasTbl = self.arrayPeliculas}
+            
+        else {
+            let predicado = NSPredicate(format:"pelicula_nombre CONTAINS[c] %@", searchText)
+            let arrayResultado = NSMutableArray(array: self.arrayPeliculas.filtered(using: predicado))
+            self.arrayPeliculasTbl = arrayResultado
+        }
+        
+        
+    }
+
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.arrayPeliculas.count
+        return self.arrayPeliculasTbl.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -28,7 +52,7 @@ class PeliculasViewController: UIViewController, UICollectionViewDataSource, UIC
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PeliculaCollectionViewCell
         
-        cell.objPelicula = self.arrayPeliculas[(indexPath as NSIndexPath).item] as? Pelicula
+        cell.objPelicula = self.arrayPeliculasTbl[(indexPath as NSIndexPath).item] as? Pelicula
         cell.actualizarData()
         
         return cell
@@ -49,14 +73,16 @@ class PeliculasViewController: UIViewController, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        collectionView.deselectItem(at: indexPath, animated: true)
         
-        let objPelicula = self.arrayPeliculas[(indexPath as NSIndexPath).item] as! Pelicula
+        let objPelicula = self.arrayPeliculasTbl[(indexPath as NSIndexPath).item] as! Pelicula
         self.performSegue(withIdentifier: "DetallePeliculaViewController", sender: objPelicula)
     }
 
      override func viewDidLoad()
     {
+        
         PeliculaBC.listarPeliculas{ (arrayPeliculas) in
             self.arrayPeliculas = arrayPeliculas
+            self.arrayPeliculasTbl = arrayPeliculas
         }
         super.viewDidLoad()
     }
